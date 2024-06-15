@@ -1,0 +1,7 @@
+editdistance==0.8.1
+fastapi==0.111.0
+paddleocr==2.7.3
+Pillow==10.3.0
+pydantic==2.7.4
+starlette==0.37.2
+paddlepaddle==2.6.1
