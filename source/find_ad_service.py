@@ -1,6 +1,6 @@
-from ocr_model import OCRModel
+from .ocr_model import OCRModel
 from dataclasses import dataclass
-from ad_finder import find_ad, AdDefinitionStatus
+from .ad_finder import find_ad, AdDefinitionStatus
 
 
 @dataclass

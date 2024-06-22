@@ -4,8 +4,8 @@ from fastapi.exceptions import RequestValidationError
 from pydantic import BaseModel
 from starlette import status
 from starlette.responses import JSONResponse
-from ocr_model import OCRModel
-from find_ad_service import FindAdService, ResearchedImage
+from .ocr_model import OCRModel
+from .find_ad_service import FindAdService, ResearchedImage
 
 app = FastAPI()
 
