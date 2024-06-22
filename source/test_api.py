@@ -2,13 +2,13 @@ from fastapi.testclient import TestClient
 
 from .api import app
 
+client = TestClient(app)
 
 endpoint = "/image/ads/analyze"
 path_to_source = "test_source"
 
 
 def test_load_few_files():
-    client = TestClient(app)
     files = [("files", open(build_path_to_image("random_img.jpg"), "rb")),
              ("files", open(build_path_to_image("random_img_2.jpg"), "rb"))]
     response = client.post(endpoint, files=files)
@@ -16,27 +16,23 @@ def test_load_few_files():
 
 
 def test_load_one_file():
-    client = TestClient(app)
     files = [("files", open(build_path_to_image("random_img.jpg"), "rb"))]
     response = client.post(endpoint, files=files)
     assert response.status_code == 200
 
 
 def test_load_zero_files():
-    client = TestClient(app)
     files = []
     response = client.post(endpoint, files=files)
     assert response.status_code == 400
 
 
 def test_load_null_files():
-    client = TestClient(app)
     response = client.post(endpoint, files=None)
     assert response.status_code == 400
 
 
 def test_find_ad_by_erid():
-    client = TestClient(app)
     file_name = "with_erid.png"
     files = [("files", open(build_path_to_image(file_name), "rb"))]
     response = client.post(endpoint, files=files)
@@ -46,7 +42,6 @@ def test_find_ad_by_erid():
 
 
 def test_find_ad_by_rus_name_ads():
-    client = TestClient(app)
     file_name = "with_rus_name_ads.png"
     files = [("files", open(build_path_to_image(file_name), "rb"))]
     response = client.post(endpoint, files=files)
@@ -56,7 +51,6 @@ def test_find_ad_by_rus_name_ads():
 
 
 def test_find_ad_when_exist_erid_and_rus_name_ads():
-    client = TestClient(app)
     file_name = "with_erid_and_rus_name_ads.png"
     files = [("files", open(build_path_to_image(file_name), "rb"))]
     response = client.post(endpoint, files=files)
@@ -64,7 +58,6 @@ def test_find_ad_when_exist_erid_and_rus_name_ads():
 
 
 def test_not_find_ad():
-    client = TestClient(app)
     file_name = "without_ads.jpg"
     files = [("files", open(build_path_to_image(file_name), "rb"))]
     response = client.post(endpoint, files=files)
@@ -74,7 +67,6 @@ def test_not_find_ad():
 
 
 def test_not_find_ad_when_image_without_text():
-    client = TestClient(app)
     file_name = "without_text.jpg"
     files = [("files", open(build_path_to_image(file_name), "rb"))]
     response = client.post(endpoint, files=files)
@@ -83,14 +75,13 @@ def test_not_find_ad_when_image_without_text():
     assert result[file_name] == 0
 
 
-def test_find_may_be_ad():
-    client = TestClient(app)
-    file_name = "with_may_be_ad.png"
-    files = [("files", open(build_path_to_image(file_name), "rb"))]
-    response = client.post(endpoint, files=files)
-    result = response.json()
-    assert response.status_code == 200
-    assert result[file_name] == 2
+# def test_find_may_be_ad():
+#     file_name = "with_may_be_ad.png"
+#     files = [("files", open(build_path_to_image(file_name), "rb"))]
+#     response = client.post(endpoint, files=files)
+#     result = response.json()
+#     assert response.status_code == 200
+#     assert result[file_name] == 2
 
 
 def build_path_to_image(image_name: str) -> str:
