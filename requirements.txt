@@ -6,3 +6,4 @@ pydantic==2.7.4
 starlette==0.37.2
 paddlepaddle==2.6.1
 numpy==1.26.1
+onnxruntime==1.18.0
