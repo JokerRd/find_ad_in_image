@@ -5,9 +5,9 @@ name: Python application
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "mlops" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "mlops" ]
 
 permissions:
   contents: read
@@ -33,4 +33,4 @@ jobs:
           flake8
       - name: Test with pytest
         run: |
-          export PYTHONPATH=./ pytest
+          export PYTHONPATH=./source && pytest
