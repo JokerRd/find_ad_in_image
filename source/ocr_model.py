@@ -30,7 +30,7 @@ class OCRModel:
 
     def __init__(self, lang):
         self.lang = lang
-        self.model = PaddleOCR(lang=lang, det_db_score_mode='slow',
+        self.model = PaddleOCR(lang=lang, det_db_score_mode='slow', enable_mkldnn=True,
                                det_max_side_len=1500, use_gpu=False,
                                ocr_version='PP-OCRv4')
 
