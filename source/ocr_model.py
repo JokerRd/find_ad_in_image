@@ -33,6 +33,7 @@ class OCRModel:
         self.model = PaddleOCR(lang=lang, det_db_score_mode='slow',
                                enable_mkldnn=True,
                                det_max_side_len=1500, use_gpu=False,
+                               use_onnx=True,
                                ocr_version='PP-OCRv4')
 
     def image_to_text(self, image: bytes) -> [str]:

@@ -11,6 +11,14 @@ services:
       - jenkins-docker-certs:/certs/client
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      resources:
+        limits:
+          cpus: 4.0
+          memory: 4096M
+        reservations:
+          cpus: 3.0
+          memory: 2048M
 volumes:
   jenkins_home:
   jenkins-docker-certs:
