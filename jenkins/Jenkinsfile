@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
-                git 'https://github.com/JokerRd/find_ad_in_image.git'
+                git branch: 'mlops', url: 'https://github.com/JokerRd/find_ad_in_image.git'
                 sh "python -m pip install --upgrade -r requirements.txt"
             }
         }

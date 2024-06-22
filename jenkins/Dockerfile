@@ -9,4 +9,5 @@ RUN echo "[global]" >> /etc/pip.conf
 RUN echo "break-system-packages = true" >> /etc/pip.conf
 RUN ln -s /bin/python3 /bin/python
 RUN python -m pip install flake8 pytest
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 USER jenkins

@@ -5,3 +5,4 @@ Pillow==10.3.0
 pydantic==2.7.4
 starlette==0.37.2
 paddlepaddle==2.6.1
+numpy==1.26.4
