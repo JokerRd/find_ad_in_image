@@ -2,6 +2,9 @@ services:
   jenkins:
     image: jenkins_with_python
     container_name: jenkins_lab
+    privileged: true
+    group_add:
+      - docker
     build:
       dockerfile: Dockerfile
       context: .

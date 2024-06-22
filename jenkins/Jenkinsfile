@@ -19,7 +19,9 @@ pipeline {
         }
         stage('Image build') {
             steps {
-                sh 'docker build -t image_parser/app .'
+                    script {
+                        docker.build 'image_parser/app'
+                    }
             }
         }
     }
