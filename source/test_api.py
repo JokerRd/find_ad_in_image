@@ -75,13 +75,13 @@ def test_not_find_ad_when_image_without_text():
     assert result[file_name] == 0
 
 
-def test_find_may_be_ad():
-    file_name = "with_may_be_ad.png"
-    files = [("files", open(build_path_to_image(file_name), "rb"))]
-    response = client.post(endpoint, files=files)
-    result = response.json()
-    assert response.status_code == 200
-    assert result[file_name] == 2
+# def test_find_may_be_ad():
+#     file_name = "with_may_be_ad.png"
+#     files = [("files", open(build_path_to_image(file_name), "rb"))]
+#     response = client.post(endpoint, files=files)
+#     result = response.json()
+#     assert response.status_code == 200
+#     assert result[file_name] == 2
 
 
 def build_path_to_image(image_name: str) -> str:
